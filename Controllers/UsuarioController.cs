@@ -7,6 +7,7 @@ using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
@@ -30,27 +31,37 @@ namespace Curso.API.Controllers
         [ValidacaoModelStateCustomizada]
         public IActionResult Logar(LoginViewModelInput loginViewModelInput)
         {
-            var usuarioViewModelOutput = new usuarioViewModelOutput()
+            var usuarioViewModelOutput = new UsuarioViewModelOutput()
             {
                 Codigo = 1,
-                LoginViewModelInput = "JS",
+                Login = "JS",
                 Email = "JS@gmail.com"
             };
 
 
-            var secret = Encoding.ASCII.GetBytes("MzfsT&d9gprP>19$Es (XISg;ef15sbk: jH\\2.)8ZP'qY#7");
+            var secret = Encoding.ASCII.GetBytes("MzfsT&d9gprP>!9$Es(X!5g@;ef!5sbk:jH\\2.} 8ZP'qY#7");
             var SymmetricSecurityKey = new SymmetricSecurityKey(secret);
             var securityTokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(new Claim[])
+                Subject = new ClaimsIdentity(new Claim[]
                 {
                     new Claim(ClaimTypes.NameIdentifier, usuarioViewModelOutput.Codigo.ToString()),
                     new Claim(ClaimTypes.Name, usuarioViewModelOutput.Login.ToString()),
                     new Claim(ClaimTypes.Email, usuarioViewModelOutput.Email.ToString())
-                }
+                }),
+                Expires = DateTime.UtcNow.AddDays(1),
+                SigningCredentials = new SigningCredentials(SymmetricSecurityKey, SecurityAlgorithms.HmacSha256Signature)
             };
-            
-            return Ok(loginViewModelInput);
+            var jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
+            var tokenGenerated = jwtSecurityTokenHandler.CreateToken(securityTokenDescriptor);
+            var token = jwtSecurityTokenHandler.WriteToken(tokenGenerated);
+
+            return Ok(new
+            {
+                Token = token,
+                Usuario = usuarioViewModelOutput
+
+            }) ;
         }
 
         [HttpPost]
