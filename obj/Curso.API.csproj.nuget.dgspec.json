@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Usuario\\OneDrive\\Documentos\\CursoAPI\\Curso.API.csproj": {}
+    "C:\\Users\\Usuario\\OneDrive\\Documentos\\CursoAPI\\curso.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Usuario\\OneDrive\\Documentos\\CursoAPI\\Curso.API.csproj": {
+    "C:\\Users\\Usuario\\OneDrive\\Documentos\\CursoAPI\\curso.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Usuario\\OneDrive\\Documentos\\CursoAPI\\Curso.API.csproj",
-        "projectName": "Curso.API",
-        "projectPath": "C:\\Users\\Usuario\\OneDrive\\Documentos\\CursoAPI\\Curso.API.csproj",
+        "projectUniqueName": "C:\\Users\\Usuario\\OneDrive\\Documentos\\CursoAPI\\curso.API.csproj",
+        "projectName": "curso.API",
+        "projectPath": "C:\\Users\\Usuario\\OneDrive\\Documentos\\CursoAPI\\curso.API.csproj",
         "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Usuario\\OneDrive\\Documentos\\CursoAPI\\obj\\",
         "projectStyle": "PackageReference",
@@ -48,6 +48,24 @@
               "target": "Package",
               "version": "[5.0.15, )"
             },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.16, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[5.0.16, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.16, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.16, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.3.0, )"
@@ -75,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.407\\RuntimeIdentifierGraph.json"
         }
       }
     }
